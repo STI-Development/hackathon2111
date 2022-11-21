@@ -1,4 +1,4 @@
-package com.example.hackathon
+package com.sticonsulting.hackathon
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
