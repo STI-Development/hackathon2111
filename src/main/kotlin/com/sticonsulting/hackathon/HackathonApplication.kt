@@ -2,8 +2,7 @@ package com.sticonsulting.hackathon
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-
-@SpringBootApplication
+@SpringBootApplication()
 class HackathonApplication
 
 fun main(args: Array<String>) {
