@@ -1,6 +1,7 @@
 package com.sticonsulting.hackathon.controller
 
 import com.sticonsulting.hackathon.dto.JobApplicationDto
+import com.sticonsulting.hackathon.dto.SheetDto
 import com.sticonsulting.hackathon.service.JobApplicationService
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -15,6 +16,11 @@ class JobApplicationController(private val jobApplicationService: JobApplication
     @PostMapping("/apply")
     fun addJobApplication(@Validated @RequestBody jobApplicationDto: JobApplicationDto) : ResponseEntity<Any>{
         return ResponseEntity.ok(jobApplicationService.addJobApplication(jobApplicationDto))
+    }
+
+    @PostMapping("/apply/{id}/sheet")
+    fun addSheetToJobApplication(@PathVariable(name = "id") id: String, @Validated @RequestBody sheetDto: SheetDto) : ResponseEntity<Any>{
+        return ResponseEntity.ok(jobApplicationService.addSheetToJobApplicationById(id, sheetDto))
     }
 
     @GetMapping("/apply")

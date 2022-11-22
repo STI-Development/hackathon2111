@@ -1,5 +1,6 @@
 package com.sticonsulting.hackathon.dto
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Size
 
@@ -9,6 +10,6 @@ data class SheetDto(
     @field:Size(min = 3, max = 20, message = "Name should be between 3 - 20")
     var name: String,
     var text: String,
-    var active: Boolean,
+    @field:JsonIgnore
     var jobApplications: Set<JobApplicationDto> = HashSet()
 )

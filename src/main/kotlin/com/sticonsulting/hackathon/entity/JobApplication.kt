@@ -16,12 +16,12 @@ data class JobApplication(
     @CreationTimestamp
     @Column(updatable = false)
     val createdAt: LocalDateTime? = LocalDateTime.now(),
-    @ManyToMany
+    @ManyToMany(cascade = [CascadeType.ALL])
     @JoinTable(name = "application_sheet",
         joinColumns = [JoinColumn(name = "application_id")],
         inverseJoinColumns = [JoinColumn(name = "sheet_id")]
     )
-    val applicationSheets: Set<Sheet> = HashSet()
+    val applicationSheets: MutableSet<Sheet> = mutableSetOf()
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
