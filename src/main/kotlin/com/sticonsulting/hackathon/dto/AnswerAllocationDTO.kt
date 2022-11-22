@@ -8,5 +8,6 @@ data class AnswerAllocationDTO (
     val type: String,
     val text: String,
     val correct : Boolean,
+    val id: Long
 
 )

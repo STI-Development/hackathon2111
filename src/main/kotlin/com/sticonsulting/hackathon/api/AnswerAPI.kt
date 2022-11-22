@@ -14,10 +14,10 @@ import javax.websocket.server.PathParam
 @RestController("/answer")
 class AnswerAPI(private val questionFetcher: QuestionFetcher, private val answerService: AnswerUpdater) {
 
-    @PostMapping(path = ["/{qid}/answer"])
-    fun saveAnswer(@PathVariable("qid") qid: Long, @RequestBody answer: AnswerAllocationDTO ){
-        var response = answerService.createAnswer(Answer(null,answer.type,answer.text), qid, answer.correct);
-        return;
+    @PostMapping(path = ["/answerinput"])
+    fun saveAnswer(@RequestBody answer: AnswerAllocationDTO ): Answer {
+        var response = answerService.createAnswer(Answer(null,answer.type,answer.text), answer.id, answer.correct);
+        return response;
     }
 
     @PostMapping(path = ["/{qid}/answer/{aid}"])
