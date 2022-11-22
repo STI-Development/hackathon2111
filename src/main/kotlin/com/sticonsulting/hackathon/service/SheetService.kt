@@ -3,6 +3,7 @@ package com.sticonsulting.hackathon.service
 import com.sticonsulting.hackathon.entity.Sheet
 import com.sticonsulting.hackathon.repository.SheetRepository
 import org.springframework.stereotype.Service
+import java.util.Optional
 
 @Service
 class SheetService (private val sheetRepository: SheetRepository){
@@ -13,6 +14,10 @@ class SheetService (private val sheetRepository: SheetRepository){
 
     fun getAllSheets(): List<Sheet> {
         return sheetRepository.findAll().toList()
+    }
+
+    fun getSheetById(sheetId: Long): Optional<Sheet>{
+        return sheetRepository.findById(sheetId)
     }
 
 }

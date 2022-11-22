@@ -14,10 +14,10 @@ data class Sheet (
         val id: Long?,
 
         @Column(name="name")
-        val name: String,
+        var name: String,
 
         @Column(name="text")
-        val text: String,
+        var text: String,
 
         @CreationTimestamp
         @Column(name = "createdAt", updatable = false)

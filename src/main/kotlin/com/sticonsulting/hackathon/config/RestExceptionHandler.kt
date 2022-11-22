@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
+import javax.persistence.EntityExistsException
 
 @ControllerAdvice
 class RestExceptionHandler : ResponseEntityExceptionHandler() {
@@ -21,4 +22,13 @@ class RestExceptionHandler : ResponseEntityExceptionHandler() {
         return ResponseEntity.badRequest().body(ex.bindingResult.toString())
     }
 
+    @ExceptionHandler(NoSuchElementException::class)
+    fun onNoSuchElementException(ex: NoSuchElementException) : ResponseEntity<Any>{
+        return ResponseEntity.badRequest().body(ex.message)
+    }
+    //JdbcSQLIntegrityConstraintViolationException
+    @ExceptionHandler(EntityExistsException::class)
+    fun onEntityExistsException(ex: EntityExistsException) : ResponseEntity<Any>{
+        return ResponseEntity.badRequest().body(ex.message)
+    }
 }

@@ -16,7 +16,7 @@ data class JobApplication(
     @CreationTimestamp
     @Column(updatable = false)
     val createdAt: LocalDateTime? = LocalDateTime.now(),
-    @ManyToMany(cascade = [CascadeType.ALL])
+    @ManyToMany(cascade = [CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH])
     @JoinTable(name = "application_sheet",
         joinColumns = [JoinColumn(name = "application_id")],
         inverseJoinColumns = [JoinColumn(name = "sheet_id")]
