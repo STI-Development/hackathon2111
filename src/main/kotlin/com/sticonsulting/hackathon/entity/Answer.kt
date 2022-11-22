@@ -9,11 +9,13 @@ import javax.persistence.*
     name = "answer",
 )
 data class Answer(
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long,
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Long? = null,
 
     @Column(name = "type", nullable = false) var type: String,
 
-    @Column(name = "email", nullable = false, length = 255) var email: String,
+    @Column(name = "text", nullable = false) var text: String,
+
 
     @CreationTimestamp
     @Column(updatable = false)

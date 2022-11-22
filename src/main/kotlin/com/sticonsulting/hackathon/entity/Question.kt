@@ -13,7 +13,7 @@ data class Question(
 
     @Column(name = "text", nullable = false) var type: String,
 
-    @Column(name = "score") var email: Int,
+    @Column(name = "score") var email: String,
 
     @CreationTimestamp
     @Column(updatable = false)

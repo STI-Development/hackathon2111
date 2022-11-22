@@ -9,7 +9,8 @@ import javax.persistence.*
     name = "answerxquestion",
 )
 data class AnswerxQuestion(
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long,
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Long? = null,
 
     @OneToOne(cascade = [(CascadeType.ALL)])
     @JoinColumn(name = "answer_id", referencedColumnName = "id")
